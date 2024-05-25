@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strconv"
 
-	m "Product/models"
+	m "Golang-Rest-API/product/models"
 
 	"github.com/go-redis/redis/v8"
 )

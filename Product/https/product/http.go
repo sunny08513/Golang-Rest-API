@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	m "Product/models"
-	ps "Product/services"
+	m "Golang-Rest-API/product/models"
+	ps "Golang-Rest-API/product/services"
 
 	"github.com/gorilla/mux"
 )

@@ -1,7 +1,7 @@
 package stores
 
 import (
-	m "Product/models"
+	m "Golang-Rest-API/product/models"
 )
 
 type Product interface {

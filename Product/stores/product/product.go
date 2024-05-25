@@ -1,7 +1,7 @@
 package product
 
 import (
-	m "Product/models"
+	m "Golang-Rest-API/product/models"
 	"database/sql"
 	"fmt"
 

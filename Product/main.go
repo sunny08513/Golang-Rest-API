@@ -1,12 +1,13 @@
 package main
 
 import (
-	httphandler "Product/https/product"
+	httphandler "Golang-Rest-API/product/https/product"
 	"fmt"
 	"net/http"
 
-	services "Product/services/product"
-	stores "Product/stores/product"
+	middleware "Golang-Rest-API/product/middleware"
+	services "Golang-Rest-API/product/services/product"
+	stores "Golang-Rest-API/product/stores/product"
 
 	"database/sql"
 
@@ -30,8 +31,10 @@ func main() {
 	httpClient := httphandler.Handler{
 		ProductService: ps,
 	}
+
 	fmt.Println("Server starting at 8081....")
 	r := mux.NewRouter().StrictSlash(true)
+	r.Use(middleware.AuthenticationMiddleware)
 	r.HandleFunc("/products", httpClient.Get).Methods("GET")
 	r.HandleFunc("/products/{id}", httpClient.GetProduct).Methods("GET")
 	r.HandleFunc("/products/{id}", httpClient.DeleteProduct).Methods("DELETE")

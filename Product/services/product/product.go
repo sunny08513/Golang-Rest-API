@@ -1,8 +1,8 @@
 package product
 
 import (
-	m "Product/models"
-	productStore "Product/stores"
+	m "Golang-Rest-API/product/models"
+	productStore "Golang-Rest-API/product/stores"
 	"errors"
 )
 
