@@ -6,6 +6,7 @@ package stores
 
 import (
 	models "Golang-Rest-API/product/models"
+	context "context"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
@@ -65,18 +66,18 @@ func (mr *MockProductMockRecorder) DeleteProduct(id interface{}) *gomock.Call {
 }
 
 // GetProduct mocks base method.
-func (m *MockProduct) GetProduct() ([]models.Product, error) {
+func (m *MockProduct) GetProduct(ctx context.Context) ([]models.Product, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetProduct")
+	ret := m.ctrl.Call(m, "GetProduct", ctx)
 	ret0, _ := ret[0].([]models.Product)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GetProduct indicates an expected call of GetProduct.
-func (mr *MockProductMockRecorder) GetProduct() *gomock.Call {
+func (mr *MockProductMockRecorder) GetProduct(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetProduct", reflect.TypeOf((*MockProduct)(nil).GetProduct))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetProduct", reflect.TypeOf((*MockProduct)(nil).GetProduct), ctx)
 }
 
 // GetProductById mocks base method.

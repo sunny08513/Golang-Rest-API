@@ -3,6 +3,7 @@ package product
 import (
 	m "Golang-Rest-API/product/models"
 	productStore "Golang-Rest-API/product/stores"
+	"context"
 	"errors"
 )
 
@@ -16,7 +17,7 @@ func NewProduct(pStore productStore.Product) *product {
 	}
 }
 
-func (p *product) GetProduct() ([]m.Product, error) {
+func (p *product) GetProduct(ctx context.Context) ([]m.Product, error) {
 	// products := []m.Product{
 	// 	{
 	// 		Id:    1,
@@ -30,7 +31,7 @@ func (p *product) GetProduct() ([]m.Product, error) {
 	// 	},
 	// }
 
-	products, err := p.pStore.GetProduct()
+	products, err := p.pStore.GetProduct(ctx)
 	return products, err
 }
 

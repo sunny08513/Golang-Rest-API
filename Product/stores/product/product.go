@@ -2,6 +2,7 @@ package product
 
 import (
 	m "Golang-Rest-API/product/models"
+	"context"
 	"database/sql"
 	"fmt"
 
@@ -18,7 +19,7 @@ func NewStore(db *sql.DB) *product {
 	}
 }
 
-func (p *product) GetProduct() ([]m.Product, error) {
+func (p *product) GetProduct(ctx context.Context) ([]m.Product, error) {
 	if err := p.db.Ping(); err != nil {
 		return nil, err
 	}

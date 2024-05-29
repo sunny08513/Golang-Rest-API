@@ -22,8 +22,10 @@ type Error struct {
 
 func (h *Handler) Get(w http.ResponseWriter, r *http.Request) {
 
+	ctx := r.Context()
+
 	w.Header().Set("Content-Type", "application/json")
-	products, err := h.ProductService.GetProduct()
+	products, err := h.ProductService.GetProduct(ctx)
 
 	if err != nil {
 		w.WriteHeader(http.StatusBadGateway)

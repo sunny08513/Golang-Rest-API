@@ -4,6 +4,7 @@ import (
 	m "Golang-Rest-API/product/models"
 	productService "Golang-Rest-API/product/services/product"
 	"Golang-Rest-API/product/stores"
+	"context"
 	"fmt"
 	"reflect"
 	"testing"
@@ -29,11 +30,11 @@ func TestGetProduct(t *testing.T) {
 	defer ctrl.Finish()
 
 	mockStore := stores.NewMockProduct(ctrl)
-	mockStore.EXPECT().GetProduct().Return(products, nil)
+	mockStore.EXPECT().GetProduct(context.Background()).Return(products, nil)
 
 	productServiceClient := productService.NewProduct(mockStore)
 
-	expectedProducts, err := productServiceClient.GetProduct()
+	expectedProducts, err := productServiceClient.GetProduct(context.Background())
 	fmt.Println(expectedProducts)
 	if !reflect.DeepEqual(err, nil) {
 		t.Errorf("Expected: %v, Got: %v", nil, err)
